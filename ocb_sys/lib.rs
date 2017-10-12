@@ -24,7 +24,7 @@ pub const OCB_TAG_LEN: c_int = 16;
 #[repr(C)]
 #[allow(missing_copy_implementations)]
 pub struct ae_ctx {
-    __private: (),
+    __private: c_void,
 }
 
 // These routines call OpenSSL's libcrypto.

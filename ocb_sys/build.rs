@@ -13,8 +13,11 @@ use libc::c_int;
 fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
 
-    gcc::Config::new()
+    let openssl_dir = env::var("OPENSSL_INCLUDE_DIR").unwrap();
+
+    gcc::Build::new()
         .file("ocb.c")
+        .flag(&format!("-I{}", openssl_dir))
         .flag("-O3").flag("-fPIC")
         .compile("libocb.a");
 
